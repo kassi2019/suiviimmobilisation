@@ -438,7 +438,7 @@
                   <tr>
                      <!-- <th>Type Unite administrative</th> -->
                     <!-- <th title="unite administrative">Ua</th>-->
-                     <!-- <th>Equipement Type</th>  -->
+                     <th>Equipement Type</th> 
                      <th>Famille</th>
                     <th>Article</th>
                     <th>Durée de vie</th>
@@ -494,7 +494,7 @@
                     >{{formaterDate(stock.date_sortie) || 'Non renseigné'}}</td>
                     <td style="text-align: center;"
                       @dblclick="afficherModalModifierStock(index)"
-                    >{{ stock.qtesortie || '0' }}</td>
+                    >{{ stock.histo_qte - stock.quantitestock  || '0' }}</td>
                   
                      <!-- <td
                       @dblclick="afficherModalModifierStock(index)"
@@ -516,7 +516,7 @@
                    <tr
                    
                   >
-                 
+                 <td></td>
                     <td></td>
                       <td></td>
                    <td style="font-weight:bold;" title="total quantite entrant">Total en stock</td>

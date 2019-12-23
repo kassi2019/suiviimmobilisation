@@ -33,7 +33,8 @@ export function ajouterNormeArticle({ commit, dispatch }, nouveau) {
       total_ttc: nouveau.total_ttc,
       articl_id: nouveau.articl_id,
       stock_id: nouveau.stock_id,
-      qtestock: nouveau.qtestock
+      qtestock: nouveau.qtestock,
+      dureviearticle: nouveau.dureviearticle
     })).then(response => {
       if (response.status == 201) {
         commit("AJOUTER_NORME_EQUIPEMENTS", response.data);
@@ -63,7 +64,8 @@ export function modifierNormeArticle({ commit, dispatch }, nouveau) {
       total_ttc: nouveau.total_ttc,
       articl_id: nouveau.articl_id,
       stock_id: nouveau.stock_id,
-      qtestock: nouveau.qtestock
+      qtestock: nouveau.qtestock,
+      dureviearticle: nouveau.dureviearticle
     }))
     .then(response => {
       commit("MODIFIER_NORME_EQUIPEMENTS", response.data);
@@ -368,8 +370,9 @@ export function ajouterBesoinImmo({ commit, dispatch }, nouveau) {
       service_id: nouveau.service_id,
       norme_id: nouveau.norme_id,
       normearticle: nouveau.normearticle,
-      fonction_id: nouveau.fonction_id
-      
+      fonction_id: nouveau.fonction_id,
+      qterealise: nouveau.qterealise,
+      dure_vie: nouveau.dure_vie
     })
   ).then(response => {
     if (response.status == 201) {
@@ -408,7 +411,8 @@ export function modifierBesoinImmo({ commit, dispatch }, nouveau) {
       date_motif_ua: nouveau.date_motif_ua,
       norme_id: nouveau.norme_id,
       normearticle: nouveau.normearticle,
-      fonction_id: nouveau.fonction_id
+      fonction_id: nouveau.fonction_id,
+      dure_vie: nouveau.dure_vie
     })
   ).then(response => {
     commit("MODIFIER_BESOIN_IMMO", response.data);
@@ -427,7 +431,7 @@ export function modifierBesoinImmo({ commit, dispatch }, nouveau) {
 
 
 
-export function modifierMontantActuel({ commit }, objet) {
+export function modifierMontantActuel({ commit, dispatch }, objet) {
   // console.log(id_besoinImmo_a_modifier, qte_actu);
   axios.put("/modifier_besoin_immo/" + objet.id, {
     montant_total : objet.montant_actu
@@ -435,9 +439,10 @@ export function modifierMontantActuel({ commit }, objet) {
   })
     .then(response => {
       commit("MODIFIER_MONTANT_ACTUEL", response.objet);
+      dispatch("getAllBesoinImmo");
     });
 }
-export function modifierQteRealisebesoin({ commit }, objet) {
+export function modifierQteRealisebesoin({ commit, dispatch}, objet) {
   // console.log(id_besoinImmo_a_modifier, qte_actu);
   axios.put("/modifier_besoin_immo/" + objet.id, {
     qterealise: objet.qte_real
@@ -446,6 +451,7 @@ export function modifierQteRealisebesoin({ commit }, objet) {
   })
     .then(response => {
       commit("MODIFIER_QTE_REALISE_BESOIN", response.objet)
+      dispatch("getAllBesoinImmo");
     });
 }
 // export function modifierActeurDepenses({ commit }, objet) {

@@ -322,6 +322,13 @@
                     
                     
                   />
+                   <input
+                    type="hidden"
+                   v-model="formData.qterealise"
+                    
+                    
+                   
+                  />
                          <!-- <td>
                        
 
@@ -339,9 +346,7 @@
                           </div>
                         </td> -->
                         <td>
-              <div class="control-group">
-               
-                <div class="controls">
+            
                   <input
                     type="hidden"
                    :value="Historqte"
@@ -364,14 +369,13 @@
                    
                   />
                   <input
-                    type="hidden"
-                   :value="dureDeVie(formData.article_id)"
-                    
+                    type="text"
+                   :value="afficheDureVie"
+
                     class="span"
                    
                   />
-                </div>
-              </div>
+                
             </td>
             
           </tr>
@@ -687,7 +691,7 @@
                   />
                   <input
                     type="hidden"
-                   :value="dureDeVie(editBesoinImmo.article_id)"
+                   :value="afficheDureVieModifier"
                     
                     class="span"
                    
@@ -931,7 +935,8 @@ json_fields: {
         historiqueqte:"",
         motif_demande:"0",
         date_motif:"",
-        motif_ua:"0"
+        motif_ua:"0",
+        qterealise:"0"
       },
       editBesoinImmo: {
         uniteadmin_id: "",
@@ -1187,6 +1192,32 @@ articlesDynamiques() {
          };
 
     },
+
+
+afficheDureVie() {
+      
+      const norme = this.getPersoNormeArticle.find(normeEquipe => normeEquipe.articl_id== this.formData.article_id);
+
+      if (norme) {
+        return norme.dureviearticle
+      }
+      return 0
+    },
+
+
+afficheDureVieModifier() {
+      
+      const norme = this.getPersoNormeArticle.find(normeEquipe => normeEquipe.articl_id== this.editBesoinImmo.article_id);
+
+      if (norme) {
+        return norme.dureviearticle
+      }
+      return 0
+    },
+
+
+
+
      QuantiteEnStock() {
        return id => {
        if (id != null && id != "") {
@@ -1215,24 +1246,24 @@ articlesDynamiques() {
          };
 
     },
-    dureDeVie() {
-       return id => {
-       if (id != null && id != "") {
+//     dureDeVie() {
+//        return id => {
+//        if (id != null && id != "") {
 
-      const qteEnStock = this.getAfficheStockArticle.find(element => element.articlestock_id == id);
-       // console.log(qteEnStock)
-        if (qteEnStock) {
-      return qteEnStock.durevie;
-    }
-    return "0"
-     }
-         };
-// console.log(qteEnStock)
-//       if (qteEnStock) {
-//         return qteEnStock.quantitestock;
-//       }
-//       return "0"
-    },
+//       const qteEnStock = this.getAfficheStockArticle.find(element => element.articlestock_id == id);
+//        // console.log(qteEnStock)
+//         if (qteEnStock) {
+//       return qteEnStock.durevie;
+//     }
+//     return "0"
+//      }
+//          };
+// // console.log(qteEnStock)
+// //       if (qteEnStock) {
+// //         return qteEnStock.quantitestock;
+// //       }
+// //       return "0"
+//     },
 QuantiteEnStockModifier() {
       const qteEnStock = this.getAfficheStockArticle.find(element=> element.quantitestock == this.editBesoinImmo.article_id);
 
@@ -1420,7 +1451,7 @@ afficheQteRestant() {
         qtestock:this.AfficheQtesortant,
         //  qteactuelstock:this.AfficheQteActuelEnStock,
          qte_recu:this.qteRecu,
-         dure_vie:this.dureDeVie(this.formData.article_id),
+         dure_vie:this.afficheDureVie,
          norme_id :this.recupererIdNorme,
          normearticle : this.recupererNorme
       };
@@ -1483,7 +1514,7 @@ afficheQteRestant() {
         montant_total: this.montantTotalarticlesModifier,
         historiqueqte: this.Historqtemodifier,
          qtestock:this.QuantiteEnStockModifier,
-         dure_vie:this.dureDeVie(this.formData.article_id),
+         dure_vie:this.afficheDureVieModifier,
          norme_id :this.recupererIdNormeModifier,
          normearticle : this.recupererNormeModifier
       };

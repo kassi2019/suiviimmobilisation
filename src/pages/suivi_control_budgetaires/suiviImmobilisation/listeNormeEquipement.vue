@@ -144,6 +144,15 @@
                     class="span"
                     
                   />
+                   <input
+                    type="hidden"
+                   :value="dureVieEquipement"
+                   
+                   
+                    readonly
+                    class="span"
+                    
+                  />
                
             </td>
             <td>
@@ -655,6 +664,7 @@ uniteAdministrativeDynamiques() {
         }
       };
     },
+    
      articlesDynamiques() {
       return id => {
         if (id != null && id != "") {
@@ -795,6 +805,16 @@ CoutMoyen() {
       }
       return 0
     },
+
+    dureVieEquipement() {
+      
+      const norme = this.getAfficheStockArticle.find(normeEquipe => normeEquipe.articlestock_id == this.formData.articl_id);
+
+      if (norme) {
+        return norme.durevie;
+      }
+      return 0
+    },
   },
   methods: {
     ...mapActions("SuiviImmobilisation", [
@@ -821,6 +841,7 @@ CoutMoyen() {
         total_ttc:this.totalTTC,
         stock_id:this.recupererIdStock,
         qtestock:this.qteEnStock,
+        dureviearticle :this.dureVieEquipement
       };
       this.ajouterNormeArticle(nouvelObjet);
 

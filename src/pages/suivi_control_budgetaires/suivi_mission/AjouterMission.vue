@@ -497,20 +497,20 @@ export default {
    },
 
 
-   afficherLaFonctionDActeurDepenseDynamique(){
-     return acte_personnel_id => {
-       if( acte_personnel_id != undefined) {
-    var acteur = this.all_acteur_depense.find(acteur => acteur.id == acte_personnel_id  )
+  //  afficherLaFonctionDActeurDepenseDynamique(){
+  //    return acte_personnel_id => {
+  //      if( acte_personnel_id != undefined) {
+  //   var acteur = this.all_acteur_depense.find(acteur => acteur.id == acte_personnel_id  )
     
-       this.fonctionActeur = acteur.fonction.id
+  //      this.fonctionActeur = acteur.fonction.id
        
-    // console.log(acteur)
-     return acteur.fonction.libelle
-       }
-    return null
-     }
+  //   // console.log(acteur)
+  //    return acteur.fonction.libelle
+  //      }
+  //   return null
+  //    }
   
-   },
+  //  },
 
 
 

@@ -168,7 +168,7 @@
                             </div>
                           </div>
                         </td>
-                         <td>
+                         <!-- <td>
                           <div class="control-group">
                             <label class="control-label">Quantite en récu</label>
                             <div class="controls">
@@ -180,7 +180,7 @@
                               />
                             </div>
                           </div>
-                        </td>
+                        </td> -->
                          <td>
                           <div class="control-group">
                             <label class="control-label">Prix unitaire:</label>
@@ -222,13 +222,7 @@
                           </div>
                         </td>
 
-                        
-                        
-                       
-                      </tr>
-                      <tr>
-                        
-                      <td>
+                        <td>
                           <div class="control-group">
                             <label class="control-label">Qté Actuel:</label>
                             <div class="controls">
@@ -236,6 +230,12 @@
                             </div>
                           </div>
                         </td>
+                        
+                       
+                      </tr>
+                      <tr>
+                        
+                      
 
                         <td>
                           <div class="control-group">
@@ -315,16 +315,16 @@
                                :value="normeEquipement"
                                readonly
                               />
+                              <input
+                    type="hidden"
+                   :value="AffichierQuantiteRealise"
+                    
+                    class="span"
+                    
+                  />
                             </div>
                           </div>
                         </td>
-                       
-                      </tr>
-                       <tr>
-                        
-                       
-
-                       
                         <td>
                            <div class="control-group">
                             <label class="control-label">Date de mise en service:</label>
@@ -335,6 +335,13 @@
                            
                          
                         </td>
+                      </tr>
+                       <tr>
+                        
+                       
+
+                       
+                       
                         
  
 
@@ -362,30 +369,33 @@
                               :value="AffichierDureVie"
                               />
                               <input
-                                type="text"
+                                type="hidden"
                                 class="span"
                                 placeholder="Saisir Num identification"
                                :value="AffichierIdStock"
                               />
                                 <input
-                                type="text"
+                                type="hidden"
                                 class="span"
                                 placeholder="Saisir Num identification"
                                :value="AffichierqteStock"
                               />
                                <input
-                                type="text"
+                                type="hidden"
                                 class="span"
                                 placeholder="Saisir Num identification"
                                :value="stockRestant"
                               />
                               <input
-                                type="text"
+                                type="hidden"
                                 class="span"
                                 placeholder="Saisir "
                                :value="AffichierIdNorme"
                               />
+                              
                             </div>
+                            
+                            
                           </div>
                         </td>
                          <td>
@@ -399,7 +409,7 @@
                               :value="anneeAmortissement"
                               />
                                <input
-                                type="text"
+                                type="hidden"
                                 class="span"
                                readonly
                               :value="recupererIdBesoin"
@@ -408,8 +418,8 @@
                           </div>
                           
                         </td>
-                         <td>
-                         <div class="control-group">
+                         <!-- <td> -->
+                         <!-- <div class="control-group">
                             <label class="control-label">Service:</label>
                             <div class="controls">
                               <select
@@ -424,23 +434,17 @@
                                 >{{serviceimmo.libelle}}</option>
                               </select>
                             </div>
-                          </div>
+                          </div> -->
 
                           <input
-                    type="text"
+                    type="hidden"
                    :value="totalqteRealise"
                     placeholder="Saisir realiser"
                     class="span"
                     
                   />
-                   <input
-                    type="text"
-                   :value="AffichierQuantiteRealise"
-                    
-                    class="span"
-                    
-                  />
-                        </td>
+                   
+                        <!-- </td> -->
                         <td>
                        
 
@@ -456,14 +460,6 @@
                             </div>
                           </div>
                         </td>
-                      </tr>
-                    </div>
-                    <!--ongle descriptif-->
-                    <div id="tab2" class="tab-pane">
-                      
-
-                      <tr>
-                        
                         <td>
                                    <div class="control-group">
                             <label class="control-label">Type Immobilisation</label>
@@ -476,7 +472,6 @@
                             </div>
                           </div>
                         </td>
-                       
                         <td>
                           <label class="control-label">N°facture:</label>
                           <div class="controls">
@@ -488,6 +483,17 @@
                             />
                           </div>
                         </td>
+                      </tr>
+                    </div>
+                    <!--ongle descriptif-->
+                    <div id="tab2" class="tab-pane">
+                      
+
+                      <tr>
+                        
+                        
+                       
+                        
                         <td>
                           <div class="control-group">
                             <label class="control-label">Montant Amorti:</label>
@@ -527,13 +533,7 @@
                             </div>
                           </div>
                         </td>
-                      </tr>
-                        <tr>
-                         
-                        
-                      
-                        <div class="control-group">
-                          <td>
+                        <td>
                             <div class="control-group">
                               <label class="control-label">Date Amort Anterieur:</label>
                               <div class="controls">
@@ -545,7 +545,7 @@
                               </div>
                             </div>
                           </td>
-                        </div>
+                        
                         <td>
                           <div class="control-group">
                             <label class="control-label">Date Evaluation:</label>
@@ -559,6 +559,13 @@
                             </div>
                           </div>
                         </td>
+                      </tr>
+                        <tr>
+                         
+                        
+                      
+                        
+                          
                          <td>
                           <div class="control-group">
                             <label class="control-label">Date cession:</label>
@@ -589,14 +596,7 @@
                             </div>
                           </div>
                         </td>
-                       
-                      </tr>
-                     
-                      <tr>
-                         
-                        
-                      
-                       <td>
+                        <td>
                             <div class="control-group">
                             <label class="control-label">Nature du Bien:</label>
                             <div class="controls">
@@ -609,7 +609,7 @@
                             </div>
                           </div>
                         </td>
-                        <td>
+                         <td>
                             <div class="control-group">
                             <label class="control-label">Etat Immobilisation</label>
                             <div class="controls">
@@ -621,6 +621,14 @@
                             </div>
                           </div>
                         </td>
+                      </tr>
+                     
+                      <tr>
+                         
+                        
+                      
+                      
+                       
                         <td>
                          <div class="control-group">
                             <label class="control-label">Cause inactivite:</label>
@@ -652,7 +660,7 @@
                           </div>
 
                           <input
-                    type="text"
+                    type="hidden"
                    :value="totalqteRealise"
                     
                     class="span"
@@ -666,7 +674,7 @@
                     
                   />
                         </td>
-                         <td>
+                         <!-- <td>
                            <div class="control-group">
                             <label class="control-label">Date de mise en service:</label>
                             <div class="controls">
@@ -675,7 +683,7 @@
                           </div>
                            
                          
-                        </td>
+                        </td> -->
                       </tr>
                     </div>
                     <!--ongle 3 -->
@@ -907,20 +915,39 @@ veifuaExist() {
  
   
      AffichierDureVie() {
-      console.log(this.formData.articleImmo_id)
-      const dureVie = this.listeBesoinValider.find(dureEquipe => dureEquipe.id == this.formData.articleImmo_id);
+      
+      const dureVie1 = this.listeBesoinValider.find(dureEquipe => dureEquipe.id == this.formData.articleImmo_id);
 
-      if (dureVie) {
-        return dureVie.dure_vie;
+      if (dureVie1) {
+        return dureVie1.dure_vie;
       }
+      console.log(dureVie1)
       return 0
     },
+
+// afficheDureVie() {
+      
+//       const norme = this.getPersoNormeArticle.find(normeEquipe => normeEquipe.affichierArticle.id== this.formData.article_id);
+
+//       if (norme) {
+//         return norme.dureviearticle
+//       }
+//       return 0
+//     },
+
+
+
+
+
+
+
+
     normeEquipement() {
       
-      const norme = this.getPersoNormeArticle.find(normeEquipe => normeEquipe.id== this.formData.fonction_id);
+      const norme = this.listeBesoinValider.find(normeEquipe => normeEquipe.id== this.formData.articleImmo_id);
 
       if (norme) {
-        return norme.quantite;
+        return norme.normearticle;
       }
       return 0
     },
@@ -1092,7 +1119,7 @@ idObjetBesoinImmoAModifierEnStock() {
 
 totalqteRealise() {
       const val = parseFloat(this.formData.qte_affecte) + parseFloat(this.AffichierQuantiteRealise);
-      return parseFloat(val).toFixed(2);
+      return parseFloat(val).toFixed(0);
     },
 
 
