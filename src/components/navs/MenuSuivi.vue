@@ -329,7 +329,12 @@
               <span class="text">Simulateur Amortissement</span>
             </router-link>
           </li>
-
+<li>
+            <router-link :to="{name:'ficheAnalyse'}" tag="a">
+              <i class="icon-table"></i>
+              <span class="text">Fiche d'analyse</span>
+            </router-link>
+          </li>
           <li>
             <router-link :to="{name:'listeStructureMoinEquipe'}" tag="a" title>
               <i class="icon-home"></i>

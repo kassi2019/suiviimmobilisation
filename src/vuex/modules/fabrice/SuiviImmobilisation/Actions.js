@@ -117,6 +117,7 @@ export function ajouterFamille({ commit, dispatch }, nouveau) {
       equipemt_id: nouveau.equipemt_id,
      
       libelle: nouveau.libelle,
+      dureVie: nouveau.dureVie
       
     }))
     .then(response => {
@@ -140,6 +141,7 @@ export function modifierFamille({ commit, dispatch }, nouveau) {
      
       equipemt_id: nouveau.equipemt_id,
       libelle: nouveau.libelle,
+      dureVie: nouveau.dureVie
       
     }))
     .then(response => {

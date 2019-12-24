@@ -9,6 +9,7 @@
                     <td
                     
                     > {{article.libelle || 'Non renseigné'}}</td>
+                    
                    
 
                     <td>

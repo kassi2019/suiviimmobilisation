@@ -17,7 +17,7 @@
                             <label class="control-label">Type Equipement:</label>
                             <div class="controls">
                               <select v-model="formData.equipemt_id">
-                                <option value>Sélectionner</option>
+                                <option value>Selectionner</option>
                                 <option
                                   v-for="typeua in equipements"
                                   :key="typeua.id"
@@ -28,7 +28,7 @@
                           </div>
                          
           <div class="control-group">
-            <label class="control-label">Libelle:</label>
+            <label class="control-label">Nom famille acticles</label>
             <div class="controls">
               <input
                 type="text"
@@ -38,6 +38,17 @@
               />
             </div>
           </div>
+             <!-- <div class="control-group">
+            <label class="control-label">Dure de vie</label>
+            <div class="controls">
+              <input
+                type="text"
+                v-model="formData.dureVie"
+                class="span"
+                placeholder="Saisir la dure de vie"
+              />
+            </div>
+          </div> -->
         </form>
       </div>
       <div class="modal-footer">

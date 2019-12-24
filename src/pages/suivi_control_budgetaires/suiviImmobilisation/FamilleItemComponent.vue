@@ -18,7 +18,7 @@
                 <thead>
                   <tr>
                     <!-- <th>code</th> -->
-                    <th style="width:100%">libelle</th>
+                    <th style="width:100%">famille acticles</th>
                     
                    
                     <th>Action</th>

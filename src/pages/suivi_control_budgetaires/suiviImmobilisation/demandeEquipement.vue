@@ -369,7 +369,7 @@
                    
                   />
                   <input
-                    type="text"
+                    type="hidden"
                    :value="afficheDureVie"
 
                     class="span"
@@ -1002,6 +1002,15 @@ json_fields: {
         }
       };
     },
+    // test() {
+    //  return id => {
+    //     if (QuantiteEnStock(formData.article_id) < this.formData.quantite && this.formData.quantite > this.recupererNorme ) {
+    //       return this.getPersoNormeArticle.filter(
+    //         element => element.typeua_id == id
+    //       );
+    //     }
+    //   };
+    // },
     fonctionDynamiques() {
       return id => {
         if (id != null && id != "") {
@@ -1540,7 +1549,7 @@ afficheQteRestant() {
 <style scoped>
 .taillemodal {
   width: 1000px;
-  margin: 0 -600px;
+  margin: 0 -500px;
 }
 .taillemodal1 {
   width: 800px;

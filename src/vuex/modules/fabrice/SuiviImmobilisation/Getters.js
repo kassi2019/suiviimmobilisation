@@ -26,7 +26,7 @@ const stockageArticles = state => state.stockageArticles;
 
 
 
-trieUaImmobilisation
+listeBesoinValider
 
 
 
@@ -117,14 +117,14 @@ export const personBesoinImmo = (state, getters, rootState, rootGetters) =>
 
     return element;
   });
-
+besoinEquipement
 export const trieUaBesoinImmo = state =>
   state.besoinImmobilisations.filter(
     trieUaBesoin => trieUaBesoin.quantite !== 0
   );
   export const getBesoinValider = state =>
            state.besoinImmobilisations.filter(
-             trieUaBesoin => trieUaBesoin.motif_ua == 1
+             trieUaBesoin => trieUaBesoin.motif_ua == 1 && trieUaBesoin.quantite !== 0
            );
 
 export const trieDemandeValider = state =>
@@ -153,10 +153,14 @@ export const listeBesoinValider = (state, getters, rootState, rootGetters) =>
              element.famille_id !== null &&
              element.typeuniteadminist_id !== null &&
              element.service_id !== null &&
-             element.norme_id !== null
+             element.norme_id !== null &&
+             element.fonction_id
            ) {
              element = {
                ...element,
+               afficherFonction: rootGetters["personnelUA/fonctions"].find(
+                 afficheService => afficheService.id == element.fonction_id
+               ),
                afficherNorme: rootGetters["SuiviImmobilisation/normeEquipements"].find(
                  afficheService => afficheService.id == element.norme_id
                ),
@@ -186,6 +190,57 @@ export const listeBesoinValider = (state, getters, rootState, rootGetters) =>
 
            return element;
          });
+
+
+
+
+
+export const ressultatBesoin = (state, getters, rootState, rootGetters) =>
+  getters.besoinImmobilisations.map(element => {
+    if (
+      element.equipe_id &&
+      element.article_id !== null &&
+      element.uniteadmin_id !== null &&
+      element.famille_id !== null &&
+      element.typeuniteadminist_id !== null &&
+      element.service_id !== null &&
+      element.norme_id !== null &&
+      element.fonction_id
+    ) {
+      element = {
+        ...element,
+        afficherFonction: rootGetters["personnelUA/fonctions"].find(
+          afficheService => afficheService.id == element.fonction_id
+        ),
+        afficherNorme: rootGetters["SuiviImmobilisation/normeEquipements"].find(
+          afficheService => afficheService.id == element.norme_id
+        ),
+        service: rootGetters["SuiviImmobilisation/services"].find(
+          afficheService => afficheService.id == element.service_id
+        ),
+        uniteAdminist: rootGetters[
+          "uniteadministrative/uniteAdministratives"
+        ].find(uniteAdm => uniteAdm.id == element.uniteadmin_id),
+        famille: rootGetters["SuiviImmobilisation/familles"].find(
+          equipefamille => equipefamille.id == element.famille_id
+        ),
+        typeUniteAdmin: rootGetters[
+          "parametreGenerauxAdministratif/type_Unite_admins"
+        ].find(
+          typeUniteAdmin =>
+            typeUniteAdmin.id == element.typeuniteadminist_id
+        ),
+        afficheArticle: getters.articles.find(
+          affichArticles => affichArticles.id == element.article_id
+        ),
+        afficheEquipe: getters.equipements.find(
+          affichequip => affichequip.id == element.equipe_id
+        )
+      };
+    }
+
+    return element;
+  });
 
 
 
@@ -706,7 +761,7 @@ export const groupTriUaImmo = (state, getters) => {
   //delete getters.trieUaImmobilisation.
   return groupBy(getters.listeBesoinValider, "typeuniteadminist_id");
 };
-listeBesoinValider
+
 
 export const totalQteEntrant = (state, getters) =>
   getters.stockageArticles.reduce(
@@ -716,6 +771,12 @@ export const totalQteEntrant = (state, getters) =>
 export const totalQteSortant = (state, getters) =>
   getters.stockageArticles.reduce(
     (prec, cur) => parseInt(prec) + parseInt(cur.qtesortie),
+    0
+  );
+
+  export const totalQteNonCouvert = (state, getters) =>
+    getters.listeBesoinValider.reduce(
+      (prec, cur) => parseInt(prec) + parseInt(cur.montant_total),
     0
   );
 
@@ -746,12 +807,15 @@ export const totalQteSortant = (state, getters) =>
 //   });
 
 
-
+export const besoinEquipement1 = state =>
+  state.besoinImmobilisations.filter(
+    trieUaBesoin => trieUaBesoin.quantite !== 0
+  );
 
 
 
 export const besoinEquipement = (state, getters, rootState, rootGetters) =>
-  getters.besoinImmobilisations.map(element => {
+  getters.besoinEquipement1.map(element => {
     if (
       element.equipe_id !== null && 
       element.uniteadmin_id !== null  &&
